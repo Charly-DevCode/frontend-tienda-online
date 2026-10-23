@@ -1,0 +1,16 @@
+.footer {
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-top: auto; /* Ayuda a que se mantenga al fondo si usas flexbox en el layout principal */
+  width: 100%;
+}
+
+.footer__text {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.85; /* Le da un toque sutilmente más suave al texto del pie de página */
+  margin: 0;
+}

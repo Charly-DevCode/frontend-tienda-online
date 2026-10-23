@@ -1,0 +1,53 @@
+:root {
+  /* 🎨 Base Palette */
+  --color-ivory: #F9F7F2;
+  --color-white: #FFFFFF;
+  --color-midnight: #004D7E;
+  /* Principal profundo y sofisticado */
+  --color-steel-blue: #A8C4EC;
+  /* Secundario / Acento fresco y tecnológico */
+  --color-charcoal: #333333;
+  --color-dark: #1E2328;
+  --color-amber: #F29A2E;
+  /* Botón de compra vibrante */
+  --color-border: #E8E5E0;
+
+  /* 🔔 Notifications & States */
+  --color-success: #6B8E73;
+  --color-warning: #C4925C;
+  --color-error: #B36666;
+  --color-info: #708A9E;  
+
+  /* 🧩 Semantic Tokens */
+  --bg-main: var(--color-ivory);
+  --bg-card: var(--color-white);
+
+  --text-main: var(--color-charcoal);
+  --text-title: var(--color-dark);
+
+  --navbar-bg: var(--color-midnight);
+  --navbar-text: var(--color-ivory);
+
+  /* Barra de anuncios usando el azul acero como toque de luz */
+  --announcement-bar-bg: var(--color-steel-blue);
+  --announcement-bar-text: var(--color-midnight);
+
+  --sidebar-bg: var(--color-white);
+  --sidebar-text: var(--color-charcoal);
+  --sidebar-active: var(--color-midnight);
+
+  --btn-primary-bg: var(--color-midnight);
+  --btn-primary-text: var(--color-ivory);
+
+  --btn-secundary-bg: var(--color-amber);
+  --btn-secundary-text: var(--color-dark);
+
+  --footer-bg: var(--color-midnight);
+  --footer-text: var(--color-ivory);
+
+  /* Semantic Feedback Tokens */
+  --feedback-success: var(--color-success);
+  --feedback-warning: var(--color-warning);
+  --feedback-error: var(--color-error);
+  --feedback-info: var(--color-info);
+}

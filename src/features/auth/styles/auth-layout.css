@@ -1,0 +1,13 @@
+.auth-layout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  padding: 1.5rem;
+}
+
+.auth-main-content {
+  width: 100%;
+  max-width: 480px; /* Aquí controlas el ancho general de la tarjeta */
+}

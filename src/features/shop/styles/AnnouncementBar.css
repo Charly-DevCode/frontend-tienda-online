@@ -1,0 +1,41 @@
+.announcement-bar {
+  background-color: var(--announcement-bar-bg);
+  color: var(--announcement-bar-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-main);
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.announcement-bar span {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.announcement-bar a {
+  color: var(--announcement-bar-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease, text-decoration 0.2s ease;
+}
+
+.announcement-bar a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .announcement-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+}

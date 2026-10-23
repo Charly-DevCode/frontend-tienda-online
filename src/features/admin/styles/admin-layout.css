@@ -1,0 +1,28 @@
+/* Bloque maestro del layout de administración */
+.admin-layout-container {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Sidebar fijo a la izquierda, contenido a la derecha */
+  min-height: 100vh;
+  background-color: var(--color-ivory, #fdfbf7); /* Tu tono ivory corporativo */
+}
+
+/* Opcional: Si tu AdminSidebar necesita posición sticky o estilos base de contenedor */
+.admin-layout-container > aside,
+.admin-sidebar { /* Ajusta según el selector real de tu AdminSidebar */
+  background-color: #ffffff;
+  border-right: 1px solid var(--color-border, #eaeaea);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Elemento: Contenedor principal donde se inyecta el <Outlet /> */
+.admin-main-content {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  gap: 1.5rem;
+  overflow-x: auto;
+  background-color: var(--color-background-ivory, #fdfbf7);
+}

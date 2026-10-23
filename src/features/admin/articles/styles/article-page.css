@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Articles Page Styles (BEM)
+   ========================================================================== */
+
+/* Cabecera: Título a la izquierda, botón de inserción a la derecha */
+.admin-articles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.admin-articles-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin: 0;
+}
+
+/* Enlace convertido en botón primario utilizando tus variables */
+.admin-articles-button__insert {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.admin-articles-button__insert:hover {
+  opacity: 0.92;
+  color: var(--btn-primary-text);
+}
+
+.admin-articles-button__insert:active {
+  transform: scale(0.98);
+}

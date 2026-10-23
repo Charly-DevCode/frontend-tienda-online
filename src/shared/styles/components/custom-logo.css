@@ -1,0 +1,24 @@
+.custom-logo {  
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.custom-logo__title {
+  color: var(--color-midnight);
+}
+
+.custom-logo__subtitle {
+  color: var(--color-dark);
+}
+
+.custom-logo span {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.custom-logo :hover {
+  opacity: 0.9;
+}

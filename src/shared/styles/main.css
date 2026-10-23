@@ -1,0 +1,8 @@
+/* 1. Librerías de terceros y vendors primero */
+@import './vendors/fontawesome-free-6.1.2-web/css/all.min.css';
+
+/* 2. Reset y variables base */
+@import './base/reset.css';
+
+/* 3. Componentes globales */
+@import './ui/Button.css';
