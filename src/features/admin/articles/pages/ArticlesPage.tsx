@@ -15,6 +15,7 @@ import { parsePositiveInt } from "@/shared/utils/parsers";
 
 import '@/features/admin/articles/styles/article-page.css';
 import type { ArticleSortField } from "@/shared/types/articles-sort.type";
+import { SortAndFilterBar } from "../../components/SortAndFilterBar";
 
 
 export const ArticlesPage = () => {
@@ -46,6 +47,8 @@ export const ArticlesPage = () => {
 
   return (
     <>
+      <SortAndFilterBar />
+
       <div className='admin-articles-header'>
         <h1 className='admin-articles-title'>Gestión de Artículos</h1>
 

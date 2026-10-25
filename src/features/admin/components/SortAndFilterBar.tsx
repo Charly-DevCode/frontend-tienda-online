@@ -1,6 +1,7 @@
 import { 
   ComboCategories 
 } from '@/features/admin/categories/components/ComboCategories'
+import { ComboBrands } from '../brands/components/ComboBrands'
 
 const handleChangeCategory = (value: string) => {
   console.log({ value })
@@ -18,7 +19,7 @@ export const SortAndFilterBar = () => {
       </div>
 
       <div className='sort-filter-bar__brand'>
-        <ComboCategories onChange={handleChangeBrand} />
+        <ComboBrands onChange={handleChangeBrand} />
       </div>
 
       <div className='sort-filter-bar__field'>

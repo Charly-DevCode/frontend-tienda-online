@@ -1,6 +1,8 @@
 import {
   useBrandsAll
-} from "@/features/admin/brands/hooks/useBrandsAll"
+} from '@/features/admin/brands/hooks/useBrandsAll'
+
+import '@/shared/styles/ui/combobox.css';
 
 interface ComboBrandsProps {
   value?: string;
@@ -10,47 +12,30 @@ interface ComboBrandsProps {
 }
 
 
-export const ComboBrands = (
-  { 
-    value, 
-    placeholder = '[---- Selected Brands ----]',
-    onChange 
-  }: ComboBrandsProps
-) => {
+export const ComboBrands = ({ 
+  value, 
+  placeholder = '[---- Selected Brands ----]',
+  onChange 
+}: ComboBrandsProps) => {
   const { data, isError, isLoading } = useBrandsAll();
 
-  if (isLoading) return (<h3>Loading ...</h3>);
-
-  if (isError) return;
+  if (isLoading) return <h3 className='form-combobox__loading'>Loading brands...</h3>;
+  if (isError) return null;
 
   return (
     <select
-      value={ value ?? '' }
+      value={value ?? ''}
       onChange={(e) => onChange(e.target.value)}
-      className='combobox-brands'
-      defaultValue='none'
+      className='form-combobox'
     >
-      <option
-        className='combobox-brands__option'
-        value=''
-        disabled
-      >
-        { placeholder }
+      <option className='form-combobox__option' value='' disabled>
+        {placeholder}
       </option>
-
-      {
-        data?.map((brand) => {
-          return (
-            <option
-              key={ brand.id }
-              className='combobox-brands__option'
-              value={ brand.id }
-            >
-              { brand.name }
-            </option>
-          )
-        })
-      }
+      {data?.map((brand) => (
+        <option key={brand.id} className='form-combobox__option' value={brand.id}>
+          {brand.name}
+        </option>
+      ))}
     </select>
-  )
-}
+  );
+};
