@@ -2,20 +2,21 @@ import {
   useBrandsAll
 } from '@/features/admin/brands/hooks/useBrandsAll'
 
-import '@/shared/styles/ui/combobox.css';
 
 interface ComboBrandsProps {
   value?: string;
+  valueKey?: 'id' | 'name';
   placeholder?: string;
-  
+
   onChange: (value: string) => void;
 }
 
 
-export const ComboBrands = ({ 
-  value, 
+export const ComboBrands = ({
+  value,
+  valueKey = 'name',
   placeholder = '[---- Selected Brands ----]',
-  onChange 
+  onChange
 }: ComboBrandsProps) => {
   const { data, isError, isLoading } = useBrandsAll();
 
@@ -24,18 +25,22 @@ export const ComboBrands = ({
 
   return (
     <select
-      value={value ?? ''}
+      value={value || 'none'}
       onChange={(e) => onChange(e.target.value)}
       className='form-combobox'
     >
-      <option className='form-combobox__option' value='' disabled>
+      <option className='form-combobox__option' value='none'>
         {placeholder}
       </option>
-      {data?.map((brand) => (
-        <option key={brand.id} className='form-combobox__option' value={brand.id}>
-          {brand.name}
-        </option>
-      ))}
+      {data?.map((brand) => {
+        const optionValue = valueKey === 'id' ? String(brand.id) : brand.name;
+
+        return (
+          <option key={brand.id} className='form-combobox__option' value={optionValue}>
+            {brand.name}
+          </option>
+        )
+      })}
     </select>
   );
 };

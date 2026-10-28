@@ -22,7 +22,7 @@ export const getArticlesPaginatedAction = async (
         page: params.page,
         title: params.title,
         category: params.category,
-        brands: params.brand,
+        brand: params.brand,
         sort_by: params.sort_by,
         status: params.status,
         sort_order: params.sort_order,
