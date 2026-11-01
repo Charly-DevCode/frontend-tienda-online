@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '@/features/auth/store/auth.store';
+import { useCart } from '@/shared/hooks/useCart';
 import { Button } from '@/shared/ui/Button';
 import '@/features/shop/styles/Navbar.css';
-import { useCart } from '@/shared/hooks/useCart';
-import { useAuthStore } from '@/features/auth/store/auth.store';
 
 
 export const Navbar = () => {
@@ -42,10 +42,6 @@ export const Navbar = () => {
             </Button>
           )
         }      
-
-        <Button variant='outline' onClick={() => navigate('/auth/register')}>
-          <i className='fa-solid fa-user-plus'></i> Crear cuenta
-        </Button>
 
         { !isClient() && (
             <Button variant='outline' onClick={() => navigate('/admin')}>

@@ -1,4 +1,13 @@
-import type { Role, UserStatus } from "../types/users.type";
+type UserStatus =
+  | 'active'
+  | 'inactive'  
+
+type Role =
+  | 'client'
+  | 'ecommerce_assistant'
+  | 'it_support_specialist'
+  | 'manager';
+  
 
 export interface IUserCreate {
   email: string;

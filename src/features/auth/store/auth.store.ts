@@ -11,6 +11,7 @@ import {
 import { 
   checkAuthAction 
 } from '@/features/auth/actions/check-auth.action';
+import type { RoleUser } from '@/shared/types/user-role.type';
 
 type AuthStatus = 'authenticated' | 'not-authenticated' | 'checking';
 
@@ -23,6 +24,7 @@ type AuthState = {
 
   // Getters
   isClient: () => boolean;
+  getRole: () => string | undefined;
 
   // Actions
   login: (email: string, password: string) => Promise<boolean>;
@@ -45,6 +47,11 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       return true;
     }
     return false;
+  },
+
+  getRole: () => {
+    const user = get().user;
+    return user?.role as RoleUser | undefined;
   },
 
   // Actions

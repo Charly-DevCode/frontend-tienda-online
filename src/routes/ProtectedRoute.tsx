@@ -1,36 +1,62 @@
 import type { PropsWithChildren } from "react"
-import { useAuthStore } from "@/features/auth/store/auth.store";
 import { Navigate } from "react-router-dom";
+import { useAuthStore } from "@/features/auth/store/auth.store";
+import type { RoleUser } from '@/shared/types/user-role.type'
 
 
 export const AuthenticatedRoute = ({ children }: PropsWithChildren) => {
   const { authStatus } = useAuthStore();
-
-  if (authStatus==='checking') return null;
-
-  if (authStatus==='not-authenticated') return <Navigate to='/auth/login' />;
-  
+  if (authStatus === 'checking') return null;
+  if (authStatus === 'not-authenticated') return <Navigate to='/auth/login' />;
   return children;
 }
 
 export const NotAuthenticatedRoute = ({ children }: PropsWithChildren) => {
   const { authStatus } = useAuthStore();
-
-  if (authStatus==='checking') return null;
-
-  if (authStatus==='authenticated') return <Navigate to='/' />;
-  
+  if (authStatus === 'checking') return null;
+  if (authStatus === 'authenticated') return <Navigate to='/' />;
   return children;
 }
 
-export const AdminRoute = ({ children }: PropsWithChildren) => {
-  const { authStatus, isClient } = useAuthStore();
+interface RoleRouteProps extends PropsWithChildren {
+  allowedRoles: RoleUser[];
+}
 
-  if (authStatus==='checking') return null;
+export const RoleProtectedRoute = ({ children, allowedRoles }: RoleRouteProps) => {
+  const { authStatus, getRole } = useAuthStore();
 
-  if (authStatus==='not-authenticated') return <Navigate to='/auth/login' />;
+  if (authStatus === 'checking') return null;
+  if (authStatus === 'not-authenticated') return <Navigate to='/auth/login' />;
   
-  if (isClient()) return <Navigate to='/' />;
-
+  const role = getRole() as RoleUser | undefined;
+  
+  if (!role || !allowedRoles.includes(role)) {
+    return <Navigate to='/' />;
+  }
   return children;
 }
+
+// Wrappers tipados explícitamente con 'as RoleUser[]'
+export const EcommerceSupportRoute = ({ children }: PropsWithChildren) => (
+  <RoleProtectedRoute allowedRoles={['ecommerce_assistant', 'it_support_specialist'] as RoleUser[]}>
+    {children}
+  </RoleProtectedRoute>
+);
+
+export const ItSupportSpecialistRoute = ({ children }: PropsWithChildren) => (
+  <RoleProtectedRoute allowedRoles={['it_support_specialist'] as RoleUser[]}>
+    {children}
+  </RoleProtectedRoute>
+);
+
+export const ManagerSupportRoute = ({ children }: PropsWithChildren) => (
+  <RoleProtectedRoute allowedRoles={['manager', 'it_support_specialist'] as RoleUser[]}>
+    {children}
+  </RoleProtectedRoute>
+);
+
+export const ManagerRoute = ({ children }: PropsWithChildren) => (
+  <RoleProtectedRoute allowedRoles={['manager'] as RoleUser[]}>
+    {children}
+  </RoleProtectedRoute>
+);

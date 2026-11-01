@@ -38,7 +38,7 @@ export const SortAndFilterBar = ({
   onSortFieldChange,
   onSortOrderChange,
 }: SortAndFilterBarProps) => {
-  const values: string[] = ['id', 'title', 'category', 'brand', 'status'];
+  const values: string[] = ['id', 'title', 'category', 'brand'];
 
   return (
     <div className='sort-filter-bar'>
