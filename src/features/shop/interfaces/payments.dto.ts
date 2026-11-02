@@ -1,5 +1,13 @@
-import type { Currency } from "@/shared/types/payments.type";
+export type Currency =
+  | 'usd'
+  | 'eur'
+  | 'ars';
 
+export type PaymentStatus =
+  | 'pending'
+  | 'completed'
+  | 'failed'
+  | 'refunded';
 
 interface IPaymentBase {
   invoiceId: number;

@@ -1,13 +1,15 @@
-type UserStatus =
+export type UserStatus =
   | 'active'
   | 'inactive'  
 
-type Role =
-  | 'client'
-  | 'ecommerce_assistant'
-  | 'it_support_specialist'
-  | 'manager';
-  
+export const ROLES = [
+  'client',
+  'ecommerce_assistant',
+  'it_support_specialist',
+  'manager',
+] as const;
+
+export type RoleUser = typeof ROLES[number];
 
 export interface IUserCreate {
   email: string;
@@ -27,6 +29,6 @@ export interface IUserUpdateStatus {
 
 export interface IUserResponse extends IUserCreate {
   id: number;
-  role: Role;
+  role: RoleUser;
   status: UserStatus;
 }

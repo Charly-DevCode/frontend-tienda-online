@@ -2,7 +2,7 @@ import { api } from '@/shared/api/api';
 
 import type { 
   IBrandResponse 
-} from '@/features/admin/brands/interfaces/brands.dto';
+} from '@/features/admin/interfaces/brands.dto';
 
 
 export const getBrandsAction = async(): Promise<IBrandResponse[]> => {

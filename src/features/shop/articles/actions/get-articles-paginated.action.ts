@@ -6,7 +6,7 @@ import type {
 
 import type { 
   IArticlePaginationPublic 
-} from '@/features/shop/articles/interfaces/articles.dto';
+} from '@/features/shop/interfaces/articles.dto';
 import { getImageURL } from '@/shared/utils/getImageURL';
 
 

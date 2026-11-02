@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import type {
   IArticleResponse
-} from '@/features/admin/articles/interfaces/articles.dto';
+} from '@/features/admin/interfaces/articles.dto';
 import { currencyFormatter } from '@/shared/utils/currency-formatter';
 
 import '@/features/admin/articles/styles/table-articles.css';

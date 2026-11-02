@@ -1,5 +1,12 @@
-import type { IArticleBase, UnitsType } from '@/shared/interfaces/article.base.dto';
-import type { StatusArticle } from '@/features/admin/articles/types/articles.enums';
+import type { 
+  IArticleBase, 
+  UnitsType 
+} from '@/shared/interfaces/article.base.dto';
+
+import type { 
+  StatusArticle 
+} from '@/shared/interfaces/article.query.params';
+
 
 export interface IArticleCreate extends IArticleBase {  
   cost: number;
@@ -10,17 +17,14 @@ export interface IArticleCreate extends IArticleBase {
 export interface IArticleUpdate {
   title?: string;
   detail?: string;
+  cost?: number; 
+  price?: number;
   unitsType?: UnitsType;
   image?: string;
 }
 
 export interface IUpdateArticleStock {
   stock: number; 
-}
-
-export interface IUpdateArticlePrice {
-  cost?: number; 
-  price: number;
 }
 
 export interface IUpdateArticleBrand {

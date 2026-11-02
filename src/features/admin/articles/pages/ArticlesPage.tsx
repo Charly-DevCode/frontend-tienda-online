@@ -10,7 +10,7 @@ import type {
 
 import type {
   ArticleSortField
-} from "@/shared/types/articles-sort.type";
+} from "@/shared/interfaces/article.query.params";
 
 import {
   TableArticles

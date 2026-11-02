@@ -3,13 +3,13 @@ import { getImageURL } from "@/shared/utils/getImageURL";
 
 import type { 
   IArticlePublic 
-} from "@/features/shop/articles/interfaces/articles.dto";
+} from "@/features/shop/interfaces/articles.dto";
 
 export const getArticleBySlug = async (
   slug: string
 ): Promise<IArticlePublic> => {
   const response = await api<IArticlePublic>(
-    `/shop/articles/${slug}`
+    `/shop/articles/${ slug }`
   );
 
   const data = response.data;

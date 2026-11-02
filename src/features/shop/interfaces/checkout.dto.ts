@@ -1,6 +1,6 @@
 import type { IItemBase } from "@/shared/interfaces/item.base.dto";
-import type { ICardStripe } from "@/features/shop/checkout/interfaces/payments.dto";
-import type { IItemPublic } from "@/features/shop/checkout/interfaces/items.dto";
+import type { ICardStripe } from "@/features/shop/interfaces/payments.dto";
+import type { IItemPublic } from "@/features/shop/interfaces/items.dto";
 import type { InvoiceStatus } from "@/shared/types/invoice.status.type";
 
 interface IInvoiceBase {

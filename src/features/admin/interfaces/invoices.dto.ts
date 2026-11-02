@@ -1,4 +1,11 @@
-import type { InvoiceStatus } from "@/shared/types/invoice.status.type";
+export const INVOICE_STATUSES = [
+  'pending',  // Pendiente de pago
+  'paid',     // Pagada
+  'voided',   // Anulada
+  'refunded', // Reembolsada  
+] as const;
+
+export type InvoiceStatus = typeof INVOICE_STATUSES[number];
 
 export interface IUpdateInvoiceStatus {
   status: InvoiceStatus;

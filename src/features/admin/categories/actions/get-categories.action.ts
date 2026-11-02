@@ -2,7 +2,7 @@ import { api } from '@/shared/api/api';
 
 import type { 
   ICategoryResponse 
-} from '@/features/admin/categories/interfaces/categories.dto';
+} from '@/features/admin/interfaces/categories.dto';
 
 
 export const getCategoriesAction = async(): Promise<ICategoryResponse[]> => {

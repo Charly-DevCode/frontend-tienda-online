@@ -24,7 +24,7 @@ type AuthState = {
 
   // Getters
   isClient: () => boolean;
-  getRole: () => string | undefined;
+  getRole: () => RoleUser | undefined;
 
   // Actions
   login: (email: string, password: string) => Promise<boolean>;
@@ -51,7 +51,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 
   getRole: () => {
     const user = get().user;
-    return user?.role as RoleUser | undefined;
+    return user?.role;
   },
 
   // Actions

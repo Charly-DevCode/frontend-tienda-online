@@ -1,5 +1,5 @@
 import { ArticleCard } from '@/features/shop/articles/components/ArticleCard';
-import type { IArticlePublic } from '@/features/shop/articles/interfaces/articles.dto';
+import type { IArticlePublic } from '@/features/shop/interfaces/articles.dto';
 import '@/features/shop/articles/styles/ArticleGrid.css';
 
 interface ArticleGridProps {

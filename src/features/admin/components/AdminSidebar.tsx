@@ -1,16 +1,21 @@
 import { Link } from 'react-router-dom';
+
 import { useAuthStore } from '@/features/auth/store/auth.store';
-import { getRole, type RoleUser } from '@/shared/types/user-role.type';
-import { adminPermission } from '@/features/admin/config/admin-permission.type';
+
+import { 
+  adminPermission 
+} from '@/features/admin/config/admin-permission.type';
+
+import type { RoleUser } from '@/shared/interfaces/user.base.dto';
 
 import '@/features/admin/styles/admin-sidebar.css';
 
 
 export const AdminSidebar = () => {
   const user = useAuthStore();
-  const role: string | undefined = getRole(user.getRole());
+  const role = user.getRole();
 
-  if (role === undefined) return;
+  if (role === undefined) return null;
   const permissions = adminPermission(role as RoleUser);
 
   console.log({ permissions });

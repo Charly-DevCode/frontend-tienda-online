@@ -1,6 +1,6 @@
 import type { 
   IArticlePaginationResponse 
-} from "@/features/admin/articles/interfaces/articles.dto";
+} from "@/features/admin/interfaces/articles.dto";
 
 import type { 
   IArticleQueryParams 

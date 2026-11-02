@@ -1,4 +1,4 @@
-import type { IArticlePublic } from '@/features/shop/articles/interfaces/articles.dto';
+import type { IArticlePublic } from '@/features/shop/interfaces/articles.dto';
 import { useCounter } from '@/shared/hooks/useCounter';
 import type { IItemBase } from '@/shared/interfaces/item.base.dto';
 import '@/features/shop/article/styles/ArticleViewDetail.css';
