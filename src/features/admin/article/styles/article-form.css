@@ -1,0 +1,120 @@
+/* ==========================================
+   Estilos BEM para la Vista de Artículo (Layout & Form)
+   ================================---------- */
+
+/* Contenedor general que distribuye el formulario y la tarjeta de imagen en 2 columnas */
+.article-page-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px; /* Izquierda flexible para el form, derecha fija para la imagen */
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  align-items: start; /* Vital para que el position sticky funcione correctamente */
+}
+
+/* El formulario principal de texto */
+.form-article {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* Tarjeta blanca de contenido */
+.form-article__container {
+  background-color: var(--bg-card, #FFFFFF);
+  border: 1px solid var(--color-border, #E8E5E0);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 77, 126, 0.03);
+}
+
+/* Cabecera interna de información */
+.form-article__info {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border, #E8E5E0);
+}
+
+.form-article__info-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-title, #1E2328);
+}
+
+/* Campos del formulario */
+.form-article__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-article__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main, #333333);
+  margin-bottom: 0.35rem;
+}
+
+/* Inputs, Selects (vía componentes custom) y Textareas */
+.form-article__input,
+.form-combobox,
+.form-article__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  background-color: var(--color-white, #FFFFFF);
+  border: 1px solid var(--color-border, #E8E5E0);
+  border-radius: 0.5rem;
+  color: var(--text-main, #333333);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-article__input:focus,
+.form-combobox:focus,
+.form-article__textarea:focus {
+  outline: none;
+  border-color: var(--color-midnight, #004D7E);
+  box-shadow: 0 0 0 3px rgba(168, 196, 236, 0.25);
+}
+
+.form-article__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Mensajes de error */
+.form-article__error {
+  font-size: 0.8rem;
+  color: var(--color-error, #B36666);
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+/* ==========================================
+   Tarjeta de Imagen Exclusiva (Flotante a la derecha)
+   ========================================== */
+.article-image-card {
+  position: sticky;
+  top: 2rem;
+  width: 100%;
+  background-color: var(--bg-card, #FFFFFF);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border, #E8E5E0);
+  box-shadow: 0 10px 15px -3px rgba(0, 77, 126, 0.04);
+}
+
+/* Adaptabilidad responsive para pantallas pequeñas o móviles */
+@media (max-width: 900px) {
+  .article-page-layout {
+    grid-template-columns: 1fr; /* Cambia a una sola columna apilada */
+  }
+  
+  .article-image-card {
+    position: static; /* Se desactiva el sticky en mobile para que fluya natural */
+  }
+}

@@ -8,15 +8,17 @@
   /* Secundario / Acento fresco y tecnológico */
   --color-charcoal: #333333;
   --color-dark: #1E2328;
-  --color-amber: #F29A2E;
+  --color-bronze: #C58A50;
   /* Botón de compra vibrante */
   --color-border: #E8E5E0;
+  --color-warm-beige: #E8DDCC;
+  --color-stone-gray: #E5E5E0;
 
   /* 🔔 Notifications & States */
   --color-success: #6B8E73;
   --color-warning: #C4925C;
   --color-error: #B36666;
-  --color-info: #708A9E;  
+  --color-info: #708A9E;
 
   /* 🧩 Semantic Tokens */
   --bg-main: var(--color-ivory);
@@ -36,11 +38,21 @@
   --sidebar-text: var(--color-charcoal);
   --sidebar-active: var(--color-midnight);
 
+  /* Acción principal */
   --btn-primary-bg: var(--color-midnight);
   --btn-primary-text: var(--color-ivory);
 
-  --btn-secundary-bg: var(--color-amber);
-  --btn-secundary-text: var(--color-dark);
+  /* Acción comercial */
+  --btn-secondary-bg: var(--color-bronze);
+  --btn-secondary-text: var(--color-white);
+
+  /* Filtros y acciones neutras */
+  --btn-neutral-bg: var(--color-stone-gray);
+  --btn-neutral-text: var(--color-dark);
+
+  /* Cancelar y volver */
+  --btn-cancel-bg: var(--color-warm-beige);
+  --btn-cancel-text: var(--color-dark);
 
   --footer-bg: var(--color-midnight);
   --footer-text: var(--color-ivory);

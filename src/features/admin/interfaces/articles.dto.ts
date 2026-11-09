@@ -17,8 +17,8 @@ export interface IArticleCreate extends IArticleBase {
 export interface IArticleUpdate {
   title?: string;
   detail?: string;
-  cost?: number; 
-  price?: number;
+  cost?: string; 
+  price?: string;
   unitsType?: UnitsType;
   image?: string;
 }
@@ -41,7 +41,10 @@ export interface IArticleStatus{
 
 export interface IArticleResponse extends IArticleBase {
   id: number; // Campo exclusivo de la respuesta
-  cost: number;
+  slug: string;
+  cost: string;
+  brand_id: number;
+  category_id: number;
   category_name?: string | null;
   brand_name?: string | null;
   status: StatusArticle;

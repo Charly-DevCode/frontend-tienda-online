@@ -5,6 +5,7 @@ import type {
 
 export interface IArticlePublic extends IArticleBase {
   id: number;
+  slug: string;
   category_name?: string | null;
   brand_name?: string | null; 
 }

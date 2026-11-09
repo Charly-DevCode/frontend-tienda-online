@@ -5,8 +5,7 @@ export type UnitsType =
   | 'metro';
 
 export interface IArticleBase {
-  title: string;
-  slug: string;
+  title: string;  
   detail: string | null;
   stock: number;  
   price: string;  

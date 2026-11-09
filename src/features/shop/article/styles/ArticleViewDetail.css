@@ -78,14 +78,7 @@
   color: var(--text-main);
 }
 
-.product-detail__btn {
-  background-color: var(--btn-secundary-bg);
-  color: var(--btn-secundary-text);
-  border: none;
-  border-radius: 6px;
-  padding: 0.9rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 700;
+.product-detail__btn {   
   cursor: pointer;
   transition: opacity 0.2s;
 }

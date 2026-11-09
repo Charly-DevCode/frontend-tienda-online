@@ -1,0 +1,19 @@
+/* Bloque autónomo */
+.admin-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: .5rem;
+}
+
+/* Elementos del bloque */
+.admin-title__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.admin-title__subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}

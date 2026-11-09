@@ -18,7 +18,7 @@ export const AdminSidebar = () => {
   if (role === undefined) return null;
   const permissions = adminPermission(role as RoleUser);
 
-  console.log({ permissions });
+  //console.log({ permissions });
 
   return (
     <aside className='admin-sidebar'>

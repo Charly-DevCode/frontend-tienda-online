@@ -1,0 +1,136 @@
+.image-uploader {
+  width: 100%;
+}
+
+.image-uploader__input-file {
+  display: none;
+}
+
+.image-uploader__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.image-uploader__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main, #333333);
+  margin-bottom: 0.35rem;
+}
+
+/* Zona de Carga / Dropzone */
+.image-uploader__dropzone {
+  width: 100%;
+  min-height: 160px;
+  border: 2px dashed var(--color-border, #CBD5E1);
+  border-radius: 0.75rem;
+  background-color: var(--color-bg-subtle, #F8FAFC);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.image-uploader__dropzone:hover {
+  border-color: var(--color-primary, #3B82F6);
+  background-color: var(--color-bg-hover, #F1F5F9);
+}
+
+.image-uploader__dropzone--active {
+  border-color: var(--color-primary, #3B82F6);
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.image-uploader__placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none; /* Permite que los clics pasen al contenedor pero el botón interno funcione */
+}
+
+.image-uploader__placeholder-content button {
+  pointer-events: auto; /* Reactiva eventos en el botón interno */
+}
+
+.image-uploader__icon {
+  font-size: 2rem;
+}
+
+.image-uploader__text {
+  font-size: 0.875rem;
+  color: var(--text-muted, #64748B);
+  margin: 0;
+}
+
+/* Botón de acción */
+.image-uploader__button {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-white, #FFFFFF);
+  border: 1px solid var(--color-border, #CBD5E1);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main, #1E293B);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.15s;
+}
+
+.image-uploader__button:hover {
+  background-color: var(--color-bg-button-hover, #F1F5F9);
+}
+
+/* Contenedor de vista previa con imagen cargada */
+.image-uploader__preview-container {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.image-uploader__preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-uploader__change-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--color-ivory, #F9F7F2);
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.image-uploader__change-btn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Grilla para múltiples imágenes */
+.image-uploader__grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.image-uploader__item {
+  width: 100%;
+  height: 90px;
+  border: 1px solid var(--color-border, #CBD5E1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}

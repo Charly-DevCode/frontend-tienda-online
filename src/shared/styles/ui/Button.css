@@ -1,54 +1,92 @@
 .btn {
-  font-family: var(--font-main);
+  font-family: var(--font-main, inherit);
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 0.375rem;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
   border: 1px solid transparent;
+  user-select: none;
 }
 
-/* Deshabilita el button */
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Estado Deshabilitado */
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;  
-  background-color: var(--color-steel-blue);
-  color: var(--color-midnight);
-  border-color: var(--color-steel-blue);
+  background-color: var(--color-stone-gray);
+  color: var(--color-charcoal);
+  border-color: var(--color-border);
 }
 
-/* Variante Primaria (Para llamadas a la acción principales o destacadas) */
+/* 1. Variante Primaria (Acción principal, ej. Navbar o CTAs clave) */
 .btn--primary {
   background-color: var(--btn-primary-bg);
   color: var(--btn-primary-text);
+  border-color: var(--color-midnight);
 }
 
-.btn--primary:hover {
+.btn--primary:hover:not(:disabled) {
   background-color: var(--color-steel-blue);
   color: var(--color-midnight);
-  opacity: 0.9;
+  border-color: var(--color-steel-blue);
 }
 
-/* Variante Secundaria */
+/* 2. Variante Secundaria (Acción comercial / Bronce) */
 .btn--secondary {
-  background-color: var(--btn-secundary-bg);
-  color: var(--btn-secundary-text);
+  background-color: var(--btn-secondary-bg); /* Nota: corregido de 'secundary' */
+  color: var(--btn-secondary-text);
+  border-color: var(--color-bronze);
 }
 
-.btn--secondary:hover {
+.btn--secondary:hover:not(:disabled) {
   background-color: var(--color-steel-blue);
+  color: var(--color-dark);
+  border-color: var(--color-steel-blue);
 }
 
-/* Variante Outline */
+/* 3. Variante Neutral (Filtros y acciones secundarias neutrales) */
+.btn--neutral {
+  background-color: var(--btn-neutral-bg);
+  color: var(--btn-neutral-text);
+  border-color: var(--color-border);
+}
+
+.btn--neutral:hover:not(:disabled) {
+  background-color: var(--color-steel-blue);
+  color: var(--color-dark);
+  border-color: var(--color-steel-blue);
+}
+
+/* 4. Variante Cancelar (Volver, descartar) */
+.btn--cancel {
+  background-color: var(--btn-cancel-bg);
+  color: var(--btn-cancel-text);
+  border-color: var(--color-warm-beige);
+}
+
+.btn--cancel:hover:not(:disabled) {
+  background-color: var(--color-stone-gray);
+  color: var(--color-dark);
+}
+
+/* 5. Variante Outline (Para fondos oscuros como la Navbar) */
 .btn--outline {
   background-color: transparent;
-  color: var(--navbar-text, var(--color-ivory));
-  border-color: var(--navbar-text, var(--color-ivory));
+  color: var(--color-ivory);
+  border-color: var(--color-ivory);
 }
 
-.btn--outline:hover {
+.btn--outline:hover:not(:disabled) {
   background-color: var(--color-steel-blue);
   border-color: var(--color-steel-blue);
-  color: var(--color-ivory);
+  color: var(--color-midnight);
 }

@@ -2,21 +2,49 @@ import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import { ShopLayout } from '@/features/shop/layout/ShopLayout';
-const AuthLayout = lazy(() => import('@/features/auth/layout/AuthLayout'));
-const AdminLayout = lazy(() => import('@/features/admin/layout/AdminLayout'));
 
-import { HomePage } from '@/features/shop/articles/pages/HomePage';
-import { ArticleViewPage } from '@/features/shop/article/pages/ArticleViewPage';
-import { LoginPage } from '@/features/auth/pages/LoginPage';
-import { RegisterPage } from '@/features/auth/pages/RegisterPage';
-import { DashboardPage } from '@/features/admin/dashboard/pages/DashboardPage';
-import { ArticlesPage } from '@/features/admin/articles/pages/ArticlesPage';
-import { BrandsPage } from '@/features/admin/brands/Pages/BrandsPage';
-import { CategoriesPage } from '@/features/admin/categories/pages/CategoriesPage';
-import { InvoicesPage } from '@/features/admin/invoices/pages/InvoicesPage';
-import { UsersPage } from '@/features/admin/users/page/UsersPage';
+const AuthLayout = lazy(
+  () => import('@/features/auth/layout/AuthLayout')
+);
+const AdminLayout = lazy(
+  () => import('@/features/admin/layout/AdminLayout')
+);
 
-import { AdminRedirect } from './AdminRedirect';
+import { 
+  HomePage 
+} from '@/features/shop/articles/pages/HomePage';
+import { 
+  ArticleViewPage 
+} from '@/features/shop/article/pages/ArticleViewPage';
+import { 
+  LoginPage 
+} from '@/features/auth/pages/LoginPage';
+import { 
+  RegisterPage 
+} from '@/features/auth/pages/RegisterPage';
+import { 
+  DashboardPage 
+} from '@/features/admin/dashboard/pages/DashboardPage';
+import { 
+  AdminArticlesPage 
+} from '@/features/admin/articles/pages/AdminArticlesPage';
+import { 
+  AdminArticlePage 
+} from '@/features/admin/article/page/AdminArticlePage';
+import { 
+  BrandsPage 
+} from '@/features/admin/brands/Pages/BrandsPage';
+import { 
+  CategoriesPage 
+} from '@/features/admin/categories/pages/CategoriesPage';
+import { 
+  InvoicesPage 
+} from '@/features/admin/invoices/pages/InvoicesPage';
+import { 
+  UsersPage 
+} from '@/features/admin/users/page/UsersPage';
+
+import { AdminRedirect } from '@/routes/AdminRedirect';
 
 import { 
   NotAuthenticatedRoute,
@@ -37,7 +65,7 @@ export const appRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'products/:idSlug',
+        path: 'articles/:idSlug',
         element: <ArticleViewPage />,
       },
     ]
@@ -87,7 +115,15 @@ export const appRouter = createBrowserRouter([
         path: 'articles',
         element: (
           <EcommerceSupportRoute>
-            <ArticlesPage />
+            <AdminArticlesPage />
+          </EcommerceSupportRoute>          
+        ),
+      },
+      {
+        path: 'articles/:id',
+        element: (
+          <EcommerceSupportRoute>
+            <AdminArticlePage />
           </EcommerceSupportRoute>          
         ),
       },

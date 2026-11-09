@@ -1,21 +1,37 @@
 import { api } from '@/shared/api/api';
 
-import type { IArticleResponse } from '@/features/admin/interfaces/articles.dto';
+import type { 
+  IArticleResponse 
+} from '@/features/admin/interfaces/articles.dto';
 
 import { getImageURL } from '@/shared/utils/getImageURL';
 
-
 export const getArticleById = async (
-  id: number
+  id: string
 ): Promise<IArticleResponse> => {
-  const response = await api<IArticleResponse>(
-    `/admin/articles/${ id }`
+  if (!id) throw new Error('Id is required');
+
+  if (id==='insert') {
+    return {
+      id: 0,
+      title: '',
+      detail: '',
+      cost: '0.00',
+      price: '0.00',
+      units_type: 'units',
+      stock: 0,
+      slug: '',
+      image: null,   
+      status: 'available'   
+    } as IArticleResponse;
+  }
+
+  const { data } = await api<IArticleResponse>(
+    `/admin/articles/${ +id }` /* +id => Hace casting a number */
   );
 
-  const data = response.data;
-
   return {
-    ...data,
+    ...data,    
     image: getImageURL(data.image),
   };
 };

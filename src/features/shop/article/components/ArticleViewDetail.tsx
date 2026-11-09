@@ -2,6 +2,7 @@ import type { IArticlePublic } from '@/features/shop/interfaces/articles.dto';
 import { useCounter } from '@/shared/hooks/useCounter';
 import type { IItemBase } from '@/shared/interfaces/item.base.dto';
 import '@/features/shop/article/styles/ArticleViewDetail.css';
+import { Button } from '@/shared/ui/Button';
 
 
 interface Props {
@@ -42,27 +43,33 @@ export const ArticleViewDetail = ({ article, onAddToCart }: Props) => {
           <button className="product-detail__quantity-btn" onClick={handleAdd}>+</button>
         </div>
 
-        <button className="product-detail__btn" onClick={() => onAddToCart({
-          article_id: article.id,
-          title: article.title,
-          units: counter,
-          price: article.price
-        })}
-        >
-        Agregar al carrito
-      </button>
+        <div className='product-detail__btn'>
+          <Button
+            variant='secondary'
+            type='button'
+            onClick={() => onAddToCart({
+              article_id: article.id,
+              title: article.title,
+              units: counter,
+              price: article.price
+            })}
+          >
+            Agregar al carrito
+          </Button>
+        </div>
 
-      <div className="product-detail__specs">
-        <p><strong>Marca:</strong> {article.brand_name}</p>
-        <p><strong>Categoría:</strong> {article.category_name}</p>
-        {article.detail ? (
-          <p><strong>Descripción:</strong> {article.detail}</p>
-        ) : (
-          <p><strong>Descripción:</strong> Sin descripción</p>
-        )}
+
+        <div className="product-detail__specs">
+          <p><strong>Marca:</strong> {article.brand_name}</p>
+          <p><strong>Categoría:</strong> {article.category_name}</p>
+          {article.detail ? (
+            <p><strong>Descripción:</strong> {article.detail}</p>
+          ) : (
+            <p><strong>Descripción:</strong> Sin descripción</p>
+          )}
+        </div>
+
       </div>
-
-    </div>
 
     </section >
   );

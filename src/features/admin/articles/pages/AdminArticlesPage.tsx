@@ -31,7 +31,7 @@ import {
 import '@/features/admin/articles/styles/article-page.css';
 
 
-export const ArticlesPage = () => {
+export const AdminArticlesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const queryParams: IArticleQueryParams = {

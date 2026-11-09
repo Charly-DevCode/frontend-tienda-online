@@ -13,7 +13,7 @@ interface ArticleCardProps {
 export const ArticleCard = (article: ArticleCardProps) => {
   return (
     <div className='product-card'>
-      <Link to={`/products/${article.slug}`} className='product-card__link'>
+      <Link to={`/articles/${article.slug}`} className='product-card__link'>
         {article.image ? (
           <img
             src={article.image ?? 'not-photo_512.png'}

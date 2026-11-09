@@ -1,0 +1,69 @@
+.article-uploader {
+  width: 100%;
+}
+
+/* --- Modo Único (1 sola imagen) --- */
+.article-uploader__single-container {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 220px;
+}
+
+.article-uploader__single-item {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-card, #FFFFFF);
+  border: 2px dashed var(--color-border, #E8E5E0);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 77, 126, 0.04);
+}
+
+/* --- Modo Múltiple (Grilla) --- */
+.article-uploader__grid-container {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.article-uploader__item {
+  width: 100%;
+  height: 85px;
+  background-color: var(--bg-card, #FFFFFF);
+  border: 2px dashed var(--color-border, #E8E5E0);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 77, 126, 0.04);
+}
+
+/* Elementos comunes */
+.article-uploader__preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-uploader__placeholder {
+  width: 100%;
+  height: 140px;
+  border: 2px dashed var(--color-border, #E8E5E0);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--text-main, #333333);
+  opacity: 0.7;
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--bg-card, #FFFFFF);
+  grid-column: 1 / -1;
+}

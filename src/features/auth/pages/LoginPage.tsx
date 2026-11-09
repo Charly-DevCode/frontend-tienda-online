@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CustomLogo } from '@/shared/components/CustomLogo';
 import { useAuthStore } from '../store/auth.store';
 import { ToastNotification } from '@/shared/components/ToastNotification';
+import { Button } from '@/shared/ui/Button';
 import '@/features/auth/styles/login-page.css';
 
 
@@ -65,10 +66,13 @@ export const LoginPage = () => {
           />
         </div>
 
-        {/* Usamos tus clases globales de Button */}
-        <button type='submit' className='btn btn--primary' disabled={ showToast }>
+        <Button
+          type='submit'
+          variant='primary' 
+          disabled={ showToast }        
+        >
           Iniciar Sesión
-        </button>
+        </Button>
       </form>
 
       <div className='auth-footer'>

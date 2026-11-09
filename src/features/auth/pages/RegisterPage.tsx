@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { CustomLogo } from '@/shared/components/CustomLogo';
+import { Button } from '@/shared/ui/Button';
 import '@/features/auth/styles/register-page.css';
 
 
@@ -42,10 +43,12 @@ export const RegisterPage = () => {
           />
         </div>
 
-        {/* Usamos las clases globales del sistema de botones */}
-        <button type='submit' className='btn btn--primary'>
+        <Button
+          type='submit'
+          variant='primary'           
+        >
           Registrarse
-        </button>
+        </Button>
       </form>
 
       <div className='register-footer'>
