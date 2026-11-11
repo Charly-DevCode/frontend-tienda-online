@@ -6,9 +6,12 @@ import { ComboBrands } from '@/features/admin/brands/components/ComboBrands';
 import {
   ComboCategories
 } from '@/features/admin/categories/components/ComboCategories';
-import { 
-  SingleImageUploader 
+import {
+  SingleImageUploader
 } from '@/shared/ui/SingleImageUploader';
+import {
+  ComboboxUnits
+} from '@/features/admin/article/components/ComboboxUnits';
 
 import type {
   IArticleResponse
@@ -18,12 +21,10 @@ import { FormActions } from '@/features/admin/article/components/FormActions';
 
 import '@/features/admin/article/styles/article-form.css';
 
-
 interface ArticleFormProps {
   title: string;
   subtitle: string;
   article: IArticleResponse;
-
   onSubmit: (productLike: Partial<IArticleResponse>) => Promise<void>;
 }
 
@@ -44,7 +45,7 @@ export const ArticleForm = ({
     defaultValues: article
   });
 
-  // valida si es un insert o update
+  // Valida si es un insert o update
   const isInsert = Boolean(!article.title || article.title.trim() === '');
 
   const navigate = useNavigate();
@@ -74,16 +75,33 @@ export const ArticleForm = ({
                 className='form-article__input'
                 {...register('title', {
                   required: isInsert
-                }
+                })}
+              />
+              {errors.title && (
+                <p className='form-article__error'>
+                  Title is required
+                </p>
+              )}
+            </div>
+
+            <div className='form-article__field'>
+              <label className='form-article__label'>Units</label>
+              <Controller
+                name='units_type'
+                control={control}
+                rules={{ required: 'Units is required' }}
+                render={({ field }) => (
+                  <ComboboxUnits
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
               />
-              {
-                errors.title && (
-                  <p className='form-article__error'>
-                    Title is required
-                  </p>
-                )
-              }
+              {errors.units_type && (
+                <p className='form-article__error'>
+                  {String(errors.units_type.message)}
+                </p>
+              )}
             </div>
 
             <div className='form-article__field'>
@@ -99,13 +117,11 @@ export const ArticleForm = ({
                   } : undefined,
                 })}
               />
-              {
-                errors.price && (
-                  <p className='form-article__error'>
-                    {String(errors.price.message)}
-                  </p>
-                )
-              }
+              {errors.price && (
+                <p className='form-article__error'>
+                  {String(errors.price.message)}
+                </p>
+              )}
             </div>
 
             <div className='form-article__field'>
@@ -121,88 +137,103 @@ export const ArticleForm = ({
                   } : undefined,
                 })}
               />
-              {
-                errors.cost && (
-                  <p className='form-article__error'>
-                    {String(errors.cost.message)}
-                  </p>
-                )
-              }
+              {errors.cost && (
+                <p className='form-article__error'>
+                  {String(errors.cost.message)}
+                </p>
+              )}
             </div>
 
-            {
-              (isInsert) && (
-                <>
-                  <div className='form-article__field'>
-                    <label className='form-article__label'>Quantity</label>
-                    <input
-                      type='number'
-                      className='form-article__input'
-                      {...register('stock', {
-                        required: isInsert,
-                        min: isInsert ? {
-                          value: 1,
-                          message: 'The stock must be at least 1'
-                        } : undefined,
-                      })}
-                    />
-                    {
-                      errors.stock && (
-                        <p className='form-article__error'>
-                          {String(errors.stock.message)}
-                        </p>
-                      )
-                    }
-                  </div>
+            {/* INICIO DEL TERNARIO (Insert vs Update para Quantity, Brand y Category) */}
+            {isInsert ? (
+              <>
+                <div className='form-article__field'>
+                  <label className='form-article__label'>Quantity</label>
+                  <input
+                    type='number'
+                    className='form-article__input'
+                    {...register('stock', {
+                      required: isInsert,
+                      min: {
+                        value: 1,
+                        message: 'The stock must be at least 1'
+                      }
+                    })}
+                  />
+                  {errors.stock && (
+                    <p className='form-article__error'>
+                      {String(errors.stock.message)}
+                    </p>
+                  )}
+                </div>
 
-                  <div className='form-article__field'>
-                    <label className='form-article__label'>Brand</label>
-                    <Controller
-                      name='brand_id'
-                      control={control}
-                      rules={{
-                        required: isInsert ? 'Brand is required' : false
-                      }}
-                      render={({ field }) => (
-                        <ComboBrands
-                          value={field.value}
-                          onChange={field.onChange}
-                          valueKey='id'
-                        />
-                      )}
-                    />
-                    {errors.brand_id && (
-                      <p className='form-article__error'>
-                        {String(errors.brand_id.message)}
-                      </p>
+                <div className='form-article__field'>
+                  <label className='form-article__label'>Brand</label>
+                  <Controller
+                    name='brand_id'
+                    control={control}
+                    rules={{ required: 'Brand is required' }}
+                    render={({ field }) => (
+                      <ComboBrands
+                        value={field.value}
+                        onChange={field.onChange}
+                        valueKey='id'
+                      />
                     )}
-                  </div>
+                  />
+                  {errors.brand_id && (
+                    <p className='form-article__error'>
+                      {String(errors.brand_id.message)}
+                    </p>
+                  )}
+                </div>
 
-                  <div className='form-article__field'>
-                    <label className='form-article__label'>Category</label>
-                    <Controller
-                      name='category_id'
-                      control={control}
-                      rules={{
-                        required: isInsert ? 'category is required' : false
-                      }}
-                      render={({ field }) => (
-                        <ComboCategories
-                          value={field.value}
-                          onChange={field.onChange}
-                          valueKey='id'
-                        />
-                      )}
-                    />
-                    {errors.category_id && (
-                      <p className='form-article__error'>
-                        {String(errors.category_id.message)}
-                      </p>
+                <div className='form-article__field'>
+                  <label className='form-article__label'>Category</label>
+                  <Controller
+                    name='category_id'
+                    control={control}
+                    rules={{ required: 'category is required' }}
+                    render={({ field }) => (
+                      <ComboCategories
+                        value={field.value}
+                        onChange={field.onChange}
+                        valueKey='id'
+                      />
                     )}
-                  </div>
-                </>
-              )
-            }
+                  />
+                  {errors.category_id && (
+                    <p className='form-article__error'>
+                      {String(errors.category_id.message)}
+                    </p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className='form-article__field'>
+                  <label className='form-article__label'>Category</label>
+                  <p className='form-article__static-value'>
+                    {article.category_name || 'N/A'}
+                  </p>
+                </div>
+
+                <div className='form-article__field'>
+                  <label className='form-article__label'>Brand</label>
+                  <p className='form-article__static-value'>
+                    {article.brand_name || 'N/A'}
+                  </p>
+                </div>
+
+                <div className='form-article__field'>
+                  <label className='form-article__label'>Quantity</label>
+                  <p className='form-article__static-value'>
+                    {article.stock} {article.units_type}
+                  </p>
+                </div>
+              </>
+            )}
+            {/* FIN DEL TERNARIO */}
 
             <div className='form-article__field'>
               <label className='form-article__label'>Detail</label>
@@ -225,9 +256,9 @@ export const ArticleForm = ({
       <div className='form-article__column-image'>
         <SingleImageUploader
           setValue={setValue}
-          name='image'                    // Propiedad exacta de tu DTO
-          label='Imagen del artículo'      // Etiqueta visual (opcional)
-          currentImage={article.image}    // Imagen actual para previsualizar si existe
+          name='image'
+          label='Imagen del artículo'
+          currentImage={article.image}
         />
 
         {/* <MultipleImageUploader

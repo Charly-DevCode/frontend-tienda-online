@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "@/features/auth/store/auth.store";
-import type { RoleUser } from "@/shared/types/user-role.type";
+import type { RoleUser } from "@/shared/interfaces/user.base.dto";
 
 
 export const AdminRedirect = () => {

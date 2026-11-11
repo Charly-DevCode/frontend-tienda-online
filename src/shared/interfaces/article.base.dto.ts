@@ -1,8 +1,11 @@
-export type UnitsType =
-  | 'units'
-  | 'liter'
-  | 'gram'
-  | 'metro';
+export const Units = [
+  'units',
+  'liter',
+  'gram',
+  'metro'
+] as const;
+
+export type UnitsType = typeof Units[number];
 
 export interface IArticleBase {
   title: string;  
