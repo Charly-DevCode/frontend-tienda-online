@@ -17,7 +17,7 @@ export const ComboboxUnits = ({
   return (
     <select 
       className='form-article__input'
-      value={ value || 'none' }
+      value={ value }
       onChange={ (e) => onChange(e.target.value as UnitsType) }
     >      
       {

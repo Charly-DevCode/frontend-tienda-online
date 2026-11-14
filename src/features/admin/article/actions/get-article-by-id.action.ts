@@ -16,11 +16,13 @@ export const getArticleById = async (
       id: 0,
       title: '',
       detail: '',
-      cost: '0.00',
-      price: '0.00',
+      cost: '1.00',
+      price: '1.00',
+      brand_id: 1,
+      category_id: 1,
       units_type: 'units',
       stock: 0,
-      slug: '',
+      //slug: '',
       image: null,   
       status: 'available'   
     } as IArticleResponse;

@@ -1,8 +1,12 @@
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { AdminTitle } from '@/features/admin/components/AdminTitle';
-import { ComboBrands } from '@/features/admin/brands/components/ComboBrands';
+import { 
+  AdminTitle 
+} from '@/features/admin/components/AdminTitle';
+import { 
+  ComboBrands 
+} from '@/features/admin/brands/components/ComboBrands';
 import {
   ComboCategories
 } from '@/features/admin/categories/components/ComboCategories';
@@ -12,20 +16,25 @@ import {
 import {
   ComboboxUnits
 } from '@/features/admin/article/components/ComboboxUnits';
+import { 
+  FormActions 
+} from '@/features/admin/article/components/FormActions';
 
 import type {
   IArticleResponse
 } from '@/features/admin/interfaces/articles.dto';
-
-import { FormActions } from '@/features/admin/article/components/FormActions';
+import type { 
+  ArticleFormValues 
+} from '@/features/admin/article/interface/ArticleFormValues';
 
 import '@/features/admin/article/styles/article-form.css';
+
 
 interface ArticleFormProps {
   title: string;
   subtitle: string;
   article: IArticleResponse;
-  onSubmit: (productLike: Partial<IArticleResponse>) => Promise<void>;
+  onSubmit: (productLike: Partial<ArticleFormValues>) => Promise<void>;
 }
 
 export const ArticleForm = ({
@@ -52,7 +61,13 @@ export const ArticleForm = ({
 
   return (
     <div className='article-page-layout'>
-      <form className='form-article' onSubmit={handleSubmit(onSubmit)}>
+      <form className='form-article' onSubmit={handleSubmit(
+        onSubmit,
+        (errors) => {          
+          console.log("⚠️ El formulario tiene errores de validación:", errors);
+        }
+      )}
+      >
 
         {/* Bloque principal con su contenedor como elemento */}
         <AdminTitle title={title} subtitle={subtitle} />

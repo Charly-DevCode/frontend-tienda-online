@@ -1,32 +1,39 @@
-import { 
-  Navigate, 
-  //useNavigate, 
-  useParams 
+import { useState } from 'react';
+
+import {
+  Navigate,
+  useNavigate,
+  useParams
 } from 'react-router-dom';
 
-import { 
-  ArticleForm 
+import {
+  ArticleForm,
 } from '@/features/admin/article/page/ui/ArticleForm';
+
+import {
+  ToastNotification
+} from '@/shared/components/ToastNotification';
 
 import {
   useArticleById,
 } from '@/features/admin/article/hooks/useArticleById';
 
-import type { 
-  IArticleResponse 
-} from '@/features/admin/interfaces/articles.dto';
+import type {
+  ArticleFormValues
+} from '@/features/admin/article/interface/ArticleFormValues'
 
 
-export const AdminArticlePage = () => {  
+export const AdminArticlePage = () => {
   const { id } = useParams();
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const isInsert: boolean = id === 'insert'
+  const [showToast, setShowToast] = useState(false);
 
   const {
     isLoading,
     isError,
     data: article,
-    //mutation
+    mutation
   } = useArticleById(id || '');
 
   const title = isInsert ? 'Nuevo Producto' : 'Editar producto';
@@ -35,20 +42,22 @@ export const AdminArticlePage = () => {
     : 'Aquí puedes editar un producto';
 
   const handleSubmitForm = async (
-    productLike: Partial<IArticleResponse>
+    productLike: Partial<ArticleFormValues>
   ) => {
-
-    console.log({ productLike });
-    
-    /* await mutation.mutate(productLike, {
-      onSuccess: (data) => {            
-        navigate(`/admin/articles/${ data.id }`);
+    const payload = {
+      ...productLike,
+      id: isInsert ? undefined : productLike.id
+    }
+    await mutation.mutate(payload, {
+      onSuccess: (data) => {
+        setShowToast(true);
+        navigate(`/admin/articles/${data.id}`);
       },
 
       onError: (error) => {
-        console.log({ error });        
+        console.log({ error });
       },
-    }); */
+    });
   }
 
   if (isError) return <Navigate to='/admin/articles' />
@@ -58,12 +67,19 @@ export const AdminArticlePage = () => {
   if (!article) return <Navigate to='/admin/articles' />
 
   return (
-    
-    <ArticleForm
-      title={ title }
-      subtitle={ subtitle }
-      article={ article }
-      onSubmit={ handleSubmitForm }
-    />
+    <>
+      <ArticleForm
+        title={title}
+        subtitle={subtitle}
+        article={article}
+        onSubmit={handleSubmitForm}
+      />
+
+      <ToastNotification
+        isOpen={showToast}
+        type='success'
+        message='Se ha actualizado el artículo'
+      />
+    </>
   );
 }
